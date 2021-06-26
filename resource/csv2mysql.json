@@ -1,0 +1,63 @@
+{
+    "job": {
+        "content": [
+            {
+                "reader": {
+                    "name": "txtfilereader",
+                    "parameter": {
+                        "path": ["/usr/news.csv"],
+                        "encoding": "UTF-8",
+                        "column": [
+                            {
+                                "type": "string",
+                                "index":0
+                            },
+                            {
+                                "type": "string",
+                                "index":1
+                            },
+                            {
+                                "type": "string",
+                                "index":2
+                            },
+                            {
+                                "type": "string",
+                                "index":3
+                            },
+                            {
+                                "type": "string",
+                                "index":4
+                            }
+                        ],
+                        "fieldDelimiter": ","
+                    }
+                },
+                "writer": {
+                    "name": "mysqlwriter",
+                    "parameter": {
+                        "writeMode": "insert",
+                        "username": "***{YOUR USERNAME}***",
+                        "password": "***{YOUR PASSWORD}***",
+                        "column": [
+                            "*"
+                        ],
+                        "connection": [
+                            {
+                                "jdbcUrl": "jdbc:mysql://*.mysql.rds.aliyuncs.com:3306/xhnews",
+                                "table": [
+                                    "news"
+                                ]
+                            }
+                        ]
+                    }
+                }
+
+            }
+        ],
+        "setting": {
+            "speed": {
+                "channel": "5"
+            }
+        }
+    }
+}
